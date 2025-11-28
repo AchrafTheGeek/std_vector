@@ -19,7 +19,7 @@ void vector_init(vector *v) {
 }
 
 void vector_push(vector *v) {
-
+	
 }
 
 
