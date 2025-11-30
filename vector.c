@@ -32,12 +32,13 @@ int vector_capacity_check(vector *v) {
 
 	size_t new_cap = v->capacity * 2;
 
-	int *new_array = realloc(v->data, v->capacity * sizeof(int));
+	int *new_array = realloc(v->data, new_cap * sizeof(int));
 	if (!new_array) {
 		perror("Error: Could not reallocate memory for the vector.\n");
 		return -1;
 	}
-
+	
+	v->data = new_array;
 	v->capacity = new_cap;
 	return 0;
 }
@@ -175,8 +176,7 @@ int main(void) {
 		printf("1- List the values inside the vector.\n");
 		printf("2- Push value to the vector.\n");
 		printf("3- Pop value from the vector.\n");
-		printf("4- Delete value from the vector.\n");
-		printf("5- Find value in the vector.\n");
+		printf("4- Delete value from the vector.\n"); printf("5- Find value in the vector.\n");
 		printf("6- Exit application.\n");
 
 		if (scanf("%d", &choice) != 1) {
@@ -202,7 +202,7 @@ int main(void) {
 				break;
 			case 6:
 				printf("Exiting application. Have a nice day.\n");
-				exit(0);
+				break;
 			default:
 				printf("Error: Unkown command. Please enter a valid choice.\n");
 				break;
